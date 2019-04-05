@@ -1,0 +1,39 @@
+{
+  "author": {
+    "name": "aqos156",
+    "email": "tomas@falesnik.net",
+    "url": "https://github.com/aqos156"
+  },
+  "bugs": {
+    "url": "https://github.com/aqos156/react-native-js-dropdown/issues"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.2"
+  },
+  "description": "A dropdown component written in pure JS for Android and iOS",
+  "homepage": "https://github.com/aqos156/react-native-js-dropdown",
+  "keywords": [
+    "react",
+    "react-component",
+    "react-native",
+    "react-native-component",
+    "ios",
+    "android",
+    "dropdown",
+    "picker",
+    "select",
+    "selector",
+    "option"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "react-native-js-dropdown",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aqos156/react-native-js-dropdown.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.0.1"
+}
