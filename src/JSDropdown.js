@@ -65,7 +65,6 @@ class JSDropdown extends Component {
     buttonHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     dropdownItemHeight: PropTypes.number,
-    zIndex: PropTypes.number,
     caretOpenComponent: PropTypes.object,
     caretCloseComponent: PropTypes.object,
 
@@ -83,7 +82,6 @@ class JSDropdown extends Component {
     buttonHeight: 50,
     width: "100%",
     index: 0,
-    zIndex: 99999,
     dropdownItemHeight: 50,
     disabled: false,
     onChange: () => {},
@@ -161,7 +159,6 @@ class JSDropdown extends Component {
     const {
       entries,
       inverted,
-      zIndex,
       dropdownItemHeight,
       dropdownItemStyle,
       textStyle,
@@ -173,7 +170,6 @@ class JSDropdown extends Component {
           styles.dropdownList,
           {
             top: this.getDropdownTopOffset(),
-            zIndex: zIndex,
             height: this.calculateListHeight()
           },
           dropdownContainerStyle
