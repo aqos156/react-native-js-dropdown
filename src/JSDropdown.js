@@ -340,8 +340,8 @@ const styles = StyleSheet.create({
   },
   dropdownItem: {
     backgroundColor: colors.DARKER_LIGHT_GREY,
-    borderTopColor: colors.GREY,
-    borderTopWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: colors.GREY,
+    borderBottomWidth: 1,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center"
