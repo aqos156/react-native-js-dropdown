@@ -94,10 +94,12 @@ class JSDropdown extends Component {
   }
 
   close = () => {
+    this.props.onClose();
     this.setState({ open: false });
   };
 
   open = () => {
+    this.props.onOpen();
     this.setState({ open: true });
   };
 
