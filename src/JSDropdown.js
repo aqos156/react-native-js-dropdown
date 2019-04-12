@@ -94,17 +94,21 @@ class JSDropdown extends Component {
   }
 
   close = () => {
-    this.props.onClose();
-    this.setState({ open: false });
+    this.getButtonLayout(() => {
+      this.setState({ open: false });
+    });
   };
 
   open = () => {
-    this.props.onOpen();
-    this.setState({ open: true });
+    this.getButtonLayout(() => {
+      this.setState({ open: true });
+    });
   };
 
   toggle = () => {
-    this.setState({ open: !this.state.open });
+    this.getButtonLayout(() => {
+      this.setState({ open: !this.state.open });
+    });
   };
 
   onChange = (i, item) => {
@@ -112,7 +116,7 @@ class JSDropdown extends Component {
     this.close();
   };
 
-  onDropdownButtonLayout = event => {
+  getButtonLayout = callback => {
     this._button.measure((fx, fy, width, height, px, py) => {
       const dropdownButtonProps = {
         x: px,
@@ -120,7 +124,7 @@ class JSDropdown extends Component {
         width: width,
         height: height
       };
-      this.setState({ dropdownButtonProps });
+      this.setState({ dropdownButtonProps }, callback);
     });
   };
 
@@ -292,7 +296,6 @@ class JSDropdown extends Component {
               },
               buttonStyle
             ]}
-            onLayout={this.onDropdownButtonLayout}
           >
             {this.getItemThumbnail(entries[index])}
             <Text style={[textStyle]}>{this.getItemValue(entries[index])}</Text>
