@@ -155,7 +155,7 @@ class JSDropdown extends Component {
   calculateListHeight = () => {
     const { entries, dropdownItemHeight } = this.props;
     if (entries.length > 4) {
-      return dropdownItemHeight * 4;
+      return dropdownItemHeight * 4.5;
     } else {
       return entries.length * dropdownItemHeight;
     }
@@ -325,14 +325,14 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   buttonContainerStyle: {
-    backgroundColor: colors.LIGHT_GREY
+    backgroundColor: colors.WHITE
   },
   container: {
     width: "100%",
     height: "100%"
   },
   buttonContainer: {
-    backgroundColor: colors.LIGHT_GREY,
+    backgroundColor: colors.WHITE,
     borderColor: colors.GREY,
     borderWidth: StyleSheet.hairlineWidth,
     flexDirection: "row",
@@ -341,10 +341,10 @@ const styles = StyleSheet.create({
   },
   dropdownList: {
     position: "absolute",
-    backgroundColor: colors.DARKER_LIGHT_GREY
+    backgroundColor: colors.WHITE
   },
   dropdownItem: {
-    backgroundColor: colors.DARKER_LIGHT_GREY,
+    backgroundColor: colors.WHITE,
     borderBottomColor: colors.GREY,
     borderBottomWidth: 1,
     flexDirection: "row",
