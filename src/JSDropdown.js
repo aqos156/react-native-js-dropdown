@@ -61,6 +61,16 @@ class JSDropdown extends Component {
       PropTypes.object,
       PropTypes.array
     ]),
+    itemDisabledContainerStyle: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.object,
+      PropTypes.array
+    ]),
+    itemDisabledTextStyle: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.object,
+      PropTypes.array
+    ]),
 
     buttonHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
@@ -168,7 +178,9 @@ class JSDropdown extends Component {
       dropdownItemHeight,
       dropdownItemStyle,
       textStyle,
-      dropdownContainerStyle
+      dropdownContainerStyle,
+      itemDisabledTextStyle,
+      itemDisabledContainerStyle
     } = this.props;
     return (
       <FlatList
@@ -186,7 +198,10 @@ class JSDropdown extends Component {
         scrollEnabled
         nestedScrollEnabled
         renderItem={i => (
-          <TouchableOpacity onPress={() => this.onChange(i.index, i.item)}>
+          <TouchableOpacity
+            onPress={() => this.onChange(i.index, i.item)}
+            disabled={i.item.disabled && i.item.disabled != undefined}
+          >
             <View
               key={i.index}
               style={[
@@ -195,11 +210,26 @@ class JSDropdown extends Component {
                   width: this.state.dropdownButtonProps.width,
                   height: dropdownItemHeight
                 },
-                dropdownItemStyle
+                dropdownItemStyle,
+                i.item.disabled && i.item.disabled
+                  ? styles.disabledListItem
+                  : {}
               ]}
             >
               {this.getItemThumbnail(i.item)}
               <Text style={textStyle}>{this.getItemValue(i.item)}</Text>
+              {i.item.disabled && i.item.disabled && i.item.disabledText ? (
+                <View
+                  style={[
+                    styles.disabledTextContainer,
+                    itemDisabledContainerStyle
+                  ]}
+                >
+                  <Text style={[textStyle, itemDisabledTextStyle]}>
+                    {i.item.disabledText}
+                  </Text>
+                </View>
+              ) : null}
             </View>
           </TouchableOpacity>
         )}
@@ -324,6 +354,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   },
+  disabledListItem: {
+    backgroundColor: colors.DARKER_LIGHT_GREY
+  },
   buttonContainerStyle: {
     backgroundColor: colors.WHITE
   },
@@ -359,6 +392,11 @@ const styles = StyleSheet.create({
   },
   modal: {
     flexGrow: 1
+  },
+  disabledTextContainer: {
+    position: "absolute",
+    bottom: 0,
+    right: 5
   }
 });
 
