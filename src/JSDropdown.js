@@ -148,6 +148,11 @@ class JSDropdown extends Component {
     }
   };
 
+  getDropdownLeftOffset = () => {
+    const { x } = this.state.dropdownButtonProps;
+    return x;
+  };
+
   getItemValue = i => {
     return i && (i.thumbnail || i.value) ? i.value : i;
   };
@@ -188,6 +193,7 @@ class JSDropdown extends Component {
           styles.dropdownList,
           {
             top: this.getDropdownTopOffset(),
+            left: this.getDropdownLeftOffset(),
             height: this.calculateListHeight()
           },
           dropdownContainerStyle
