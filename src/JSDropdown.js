@@ -51,6 +51,11 @@ class JSDropdown extends Component {
       PropTypes.object,
       PropTypes.array
     ]),
+    buttonTextStyle: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.object,
+      PropTypes.array
+    ]),
     dropdownItemStyle: PropTypes.oneOfType([
       PropTypes.number,
       PropTypes.object,
@@ -314,7 +319,8 @@ class JSDropdown extends Component {
       textStyle,
       index,
       disabled,
-      buttonContainerStyle
+      buttonContainerStyle,
+      buttonTextStyle
     } = this.props;
     return (
       <View style={[styles.buttonContainerStyle, buttonContainerStyle]}>
@@ -334,7 +340,9 @@ class JSDropdown extends Component {
             ]}
           >
             {this.getItemThumbnail(entries[index])}
-            <Text style={[textStyle]}>{this.getItemValue(entries[index])}</Text>
+            <Text style={[textStyle, buttonTextStyle]}>
+              {this.getItemValue(entries[index])}
+            </Text>
             {this._renderCaret()}
           </View>
         </TouchableOpacity>
